@@ -21,7 +21,16 @@
 			$this->action_page();	
 		}
 
-		public function action_page() 
+		public function action_my() 
+		{
+			// авторизован ли пользователь?
+			if (!$this->user)
+				$this->p404();
+							
+			$this->action_page($my = true);	
+		}		
+
+		public function action_page($my_task = false) 
 		{
 			$page_num = isset($this->params[2]) ? (int)$this->params[2] : 1;
 
@@ -29,12 +38,24 @@
 				$this->p404();
 
 			// создание объекта постраничной навигации (обязательные параметры)
-			$mPagination = new M_Pagination(TABLE_PREFIX . 'tasks', '/page/');
+			if ($my_task)	
+				$mPagination = new M_Pagination(TABLE_PREFIX . 'tasks', '/my/page/');
+			else
+				$mPagination = new M_Pagination(TABLE_PREFIX . 'tasks', '/page/');
 
-			// задание свойств объекта
-			$res = $mPagination->fields(TABLE_PREFIX  . 'tasks.*')
-								->order_by('id_task DESC')							
-								->on_page(3)->page_num($page_num)->page();
+			// выборка задач текущего пользователя
+			if ($my_task) { 
+				$res = $mPagination->fields(TABLE_PREFIX  . 'tasks.*')
+						->where("id_user = {$this->user['id_user']}")
+						->order_by('id_task DESC')							
+						->on_page(3)->page_num($page_num)->page();
+
+			} else { //все задачи
+				$res = $mPagination->fields(TABLE_PREFIX  . 'tasks.*')
+						->order_by('id_task DESC')							
+						->on_page(3)->page_num($page_num)->page();	
+			}				
+
 			if(!$res)
 				$this->p404();							
 
@@ -48,8 +69,10 @@
 			
 			// генерация пагинации
 			$navbar = $this->template('inc/v/v_navbar.php', ['navparams' => $mPagination->navparams()]);
+			// выбор шаблона
+			$tmpl_name = ($my_task) ? 'v_my.php' : 'v_index.php'; 
 			// генерация контента страницы
-			$this->content = $this->template('inc/v/tasks/v_index.php', 
+			$this->content = $this->template("inc/v/tasks/$tmpl_name", 
 			[
 				'tasks' => $tasks,
 				'navbar' => $navbar,
@@ -57,6 +80,8 @@
 				'adminlink' => $this->adminlink
 			]);			
 		}
+
+
 
 		public function action_add() 
 		{		
@@ -70,6 +95,8 @@
 					$this->Redirect('/');
 	
 				$errors = $mTasks->errors();
+
+
 				$fields = $_POST;	
 			}
 

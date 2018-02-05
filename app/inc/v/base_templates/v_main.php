@@ -32,6 +32,7 @@
 								<? if (!$adminlink) : ?> 
 			  			   			<a class="nav-item nav-link" href="/login">Войти</a>
 			  			   		<? else: ?>
+			  			   			<a class="nav-item nav-link" href="/my">Мои задачи</a>
 			  			   			<a class="nav-item nav-link" href="/login">Выход (<b><?=$user?></b>)</a>
 			  			   		<? endif ?>
 

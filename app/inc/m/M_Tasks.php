@@ -43,6 +43,10 @@ class M_Tasks extends M_Model
 			$fields['img'] = $file_name;
 		}
 
+		// если пользователь авторизован, добавляем для записи в бд id_user
+		if ($user = M_Users::Instance()->Get())
+			$fields['id_user'] = $user['id_user'];
+
 		// запись данных в бд
 		$id_task = parent::add($fields);
 

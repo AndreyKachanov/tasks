@@ -3,7 +3,7 @@
 	return [
 
 		TABLE_PREFIX . 'tasks' => [
-			'fields' => ['id_task', 'author', 'email', 'content', 'img', 'status'], 
+			'fields' => ['id_task', 'id_user', 'author', 'email', 'content', 'img', 'status'], 
 			'not_empty' => ['id_task', 'author', 'email', 'content', 'status'],
 			//массив 'html_allowed' нужно объявлять обязательно, даже если он пустой
 			'html_allowed' => [],

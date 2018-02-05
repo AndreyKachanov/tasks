@@ -30,6 +30,7 @@
 				case 'add':  	   $this->controller = 'C_Tasks'; $this->action = 'action_add'; break;	
 				case 'edit':  	   $this->controller = 'C_Tasks'; $this->action = 'action_edit'; break;	
 				case 'login':      $this->controller = 'C_Auth'; $this->action = 'action_login'; break;			
+				case 'my':      $this->controller = 'C_Tasks'; $this->action = 'action_my'; break;			
 					    	
 				// null - заходим на главную страницу сайта
 				case null: $this->controller = 'C_Tasks';

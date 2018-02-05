@@ -1,0 +1,323 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	background-color: #fff
+.error
+	color: red !important 
+	font-size: 14px !important
+
+.succ-error
+	position: relative
+	padding: .75rem 1.25rem
+	margin-bottom: 1rem
+	border: 1px solid transparent
+	border-radius: .25rem
+
+.modal-dialog
+	width: 60%
+	max-width: none	
+
+.img_prev
+	width: 320px
+	height: 240px	
+.wrapper
+	display: flex
+	flex-direction: column
+	height: 100%	
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.page-not-found
+	padding-top: 100px
+	width: 100%
+	background-color: #fff
+	display: flex
+	flex-direction: column
+	img
+		margin: auto
+	p
+		text-align: center
+		font-family: Roboto
+		font-size: 18px
+	a
+		text-decoration: underline
+		color: #6abd6b
+
+@mixin opacity($opacity)
+	opacity: $opacity / 100
+	filter: alpha(opacity=$opacity)		
+		
+header
+
+	.top-menu
+		.navbar			
+			background-color: #004359
+			border-top: 1px solid #e8e8e8
+			border-bottom: 1px solid #e8e8e8
+			padding-top: 4px
+			padding-bottom: 4px
+			button
+				background-color: #ccc
+				margin-top: 5px
+				margin-bottom: 5px
+				padding: .10rem .50rem
+
+			.navbar-toggler
+
+
+	    	border-color: rgba(#ccc, 0.7)
+	    	.navbar-toggler-icon
+	    		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
+    	
+		.navbar-nav>a
+			&:first-child
+				padding-left: 0
+			color: #fff
+
+			&:focus, &:hover
+				color: #829399
+		.auth
+			a
+				i
+					font-size: 14px
+					position: relative
+					top: -3px
+
+.container-bg
+	background-color: #d6d6d6
+
+.content
+	// border: 1px solid red
+	flex-grow: 1
+	// flex-shrink: 0
+	// display: flex 
+	
+	.container
+		min-height: 740px
+		margin-top: 15px
+		margin-bottom: 15px
+		padding-top: 15px
+		padding-bottom: 15px		
+		table
+			border-spacing: 0px 20px
+			border-collapse: separate
+			img
+				max-width: 110px
+				max-height: 85px
+				border-radius: 5px
+			.btn-danger
+				margin-right: 10px
+				margin-bottom: 20px
+			th
+				&:nth-of-type(1), &:nth-of-type(4) 
+					cursor: default !important
+
+				border-top: none
+				border-bottom: 1px
+				&:hover
+					cursor: pointer
+			th.sortable
+				&::after
+					margin-left: 25px
+					font-family: "FontAwesome"
+					content: "\f0dc"
+					font-size: 18px
+
+			td, th
+				font-size: 14px
+			td.task
+				width: 30%
+			
+			tr
+				margin-bottom: 15px
+				min-height: 150px
+				td:last-child
+					a.btn
+						display: block
+						width: 100%
+						margin-bottom: 10px
+					width: 10%
+				td:nth-of-type(1)
+					a
+						display: block
+						
+					width: 10%
+				td:nth-of-type(2)
+					width: 15%					
+				td:nth-of-type(3)
+					max-width: 100px
+					word-wrap: break-word						
+				td:nth-of-type(5)
+					padding-left: 0
+					padding-right: 0
+					width: 12%	
+
+
+	.tasks
+		.card
+			.card-header
+				span
+					font-weight: bold
+			.card-body
+				min-height: 550px
+			.card-text
+							
+
+			.img-block
+				margin-bottom: 20px
+			img
+				width: 320px
+				height: 240px
+		form
+			textarea
+				height: 218px
+			.upload-img
+				padding: 0 !important
+				width: 320px
+				height: 240px
+				background-color: #fefefe
+				border: 1px dashed #000
+				img
+					width: 318px
+					height: 238px
+			.help-block
+				font-size: 12px
+			    display: block
+			    margin-top: 5px
+			    margin-bottom: 10px
+			    color: #737373
+			input[type="file"]
+				margin-top: 20px
+				margin-bottom: 20px
+				display: block
+			button, input[type="submit"]
+				padding-left: 25px
+				padding-right: 25px
+				margin-right: 25px
+				margin-top: 25px
+
+		.alert p:last-child
+			margin-bottom: 0			
+	.login
+		form
+			padding-top: 200px
+
+			button
+				padding-left: 30px
+				padding-right: 30px
+			.form-check-label, button
+				margin-left: 10px
+				margin-right: 10px
+			input[type="checkbox"]
+				margin-top: 8px	
+			
+
+.error-auth
+	display: block
+
+
+
+
+.succ_register
+	align-self: center
+	text-align: center
+
+
+
+footer
+	background-color: #004359
+	text-align: center
+	padding: 17px 0
+	border-top: 1px solid #e8e8e8
+	border-bottom: 1px solid #e8e8e8
+	p
+		padding: 0
+		margin: 0
+		color: #fff
+		line-height: 22px
+		a
+			color: #6abd6b
+			font-size: 16px
+			line-height: 24px
+			&:hover
+				color: #829399
+				text-decoration: none
+
+.comments-form-add
+	.btn-outline-secondary
+		border-radius: 50%
+		color: #fff
+		cursor: pointer
+		background-color: #868e96
+		margin-bottom: 1rem
+		margin-top: 1rem
+		margin-left: 1rem
+
+p.comment_succ
+	color: #3c763d
+	border-color: #d6e9c6
+	background-color: #dff0d8
+	padding: 15px
+	border-radius: 5px	
+
+.page-link
+	font-size: 12px
+	color: #000
+	&:hover
+		color: #000
+
+.page-item.active .page-link
+	background-color: #dc3545
+	border-color: #dc3545	
+
+.form-group.text-center a
+	color: #444
+	
+@import "media"

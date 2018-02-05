@@ -1,0 +1,35 @@
+{
+  "name": "tablesorter",
+  "homepage": "https://github.com/christianbach/tablesorter.git",
+  "authors": [
+    "Christian Bach"
+  ],
+  "description": "Flexible client-side table sorting",
+  "main": [
+    "jquery.metadata.js",
+    "jquery.tablesorter.min.js"
+  ],
+  "keywords": [
+    "client-side",
+    "sort",
+    "table"
+  ],
+  "license": "MIT,GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "07e0918254",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "07e0918254df3c2057d6d8e4653a0769f1881412"
+  },
+  "_source": "https://github.com/christianbach/tablesorter.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/christianbach/tablesorter.git",
+  "_direct": true
+}

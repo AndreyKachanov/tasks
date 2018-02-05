@@ -1,0 +1,46 @@
+#не выводить предупреждения для «старых» функций («устаревший» код)
+#php_value error_reporting 22517
+
+php_flag display_errors on
+php_flag display_startup_errors on
+php_flag ignore_repeated_source off
+php_flag ignore_repeated_errors off
+
+php_flag magic_quotes_gpc 0
+php_flag magic_quotes_runtime 0
+
+
+RewriteEngine On 
+
+#Installation directory
+RewriteBase /
+
+RewriteRule ^task/([^/]+)/?$ /tasks/get/$1 [L]
+RewriteRule ^page/([^/]+)/?$ /tasks/page/$1 [L]
+RewriteRule ^page/ /tasks/page/1 [L]
+
+
+#если apache обращается на прямую к файлам, тогда делаем исключение для файлов,
+#чтобы не срабатывало правило RewriteRule .* index.php?q=$0, иначе не будут работать стили и т.д... 
+#открываемоступа к файлам, чтобы не срабатывало правило (RewriteRule .* index.php?q=$0)
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#исключение для директорий(открывать доступ для директорий не желательно)
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+
+<FilesMatch "\.(php)$">
+	Deny from all
+</FilesMatch>
+
+<FilesMatch "index.(php)$">
+	Allow from all
+</FilesMatch>
+
+#Rewrite all other URLs to index.php/URL
+#вся строка после имени домена меняется на $_GET['q']
+RewriteRule .* index.php?q=$0
+
+
+

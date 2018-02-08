@@ -100,6 +100,8 @@
 				$fields = $_POST;	
 			}	
 			
+			$this->scripts[] = '../libs/ckeditor/ck_init';			
+
 			$this->title = " Менеджер задач | Добавить задачу";
 			$this->content = $this->template('inc/v/tasks/v_add.php', 
 			[	
@@ -161,6 +163,8 @@
 				if (!$fields)
 					$this->p404();
 			}
+			
+			$this->scripts[] = '../libs/ckeditor/ck_init';				
 
 			$this->title = "Редактирование задачи";					
 			$this->content = $this->template('inc/v/tasks/v_edit.php', 

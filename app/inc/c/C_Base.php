@@ -31,7 +31,8 @@ abstract class C_Base extends C_Controller
 			'jquery.tablesorter.min',
 			'../libs/bootstrap-4.0.0/dist/js/bootstrap.min',
 			'../libs/ckeditor/ckeditor',
-			'scripts.min'
+			'scripts.min',
+			// '../libs/ckeditor/ck_init',
 		];
 	}	
 

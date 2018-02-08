@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	CKEDITOR.replace( 'content' );
+	// CKEDITOR.replace( 'content' );
 	// авторизация
 	$("#form_login").submit(function() { // пeрeхвaтывaeм всe при сoбытии oтпрaвки
 		var form = $(this); // зaпишeм фoрму, чтoбы пoтoм нe былo прoблeм с this

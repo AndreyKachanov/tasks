@@ -7,7 +7,9 @@
 		<meta content="text/html; charset=utf-8" http-equiv="content-type">
 		<meta name="keywords" content="<?=$keywords?>">
 		<meta name="description" content="<?=$description?>">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">	
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+				<? foreach($styles as $style): ?> <link rel="stylesheet" href="/<?=CSS_DIR . $style?>.css" /> <? endforeach; ?>
+		<? foreach($scripts as $script): ?> <script src="/<?=JS_DIR . $script?>.js"></script> <? endforeach; ?>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -57,8 +59,7 @@
 				</div>
 			</footer>
 		</div>
-		<? foreach($styles as $style): ?> <link rel="stylesheet" href="/<?=CSS_DIR . $style?>.css" /> <? endforeach; ?>
-		<? foreach($scripts as $script): ?> <script src="/<?=JS_DIR . $script?>.js"></script> <? endforeach; ?>
+
 
 		<!-- Modal -->
 		<div  class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -30,8 +30,8 @@
 
 							<div class="form-group col">
 								<label for="replace">Текст задачи:</label>
-								<textarea name="content" class="form-control" id="content" rows="10"><?=$fields['content'] ?? ''?></textarea>
-								<div class="invalid-feedback"></div>
+									<textarea name="content" id="content" class="form-control" rows="10"><?=$fields['content'] ?? ''?></textarea>						
+								<div id="ckedit" class="invalid-feedback"></div>
 							</div>					
 						
 					</div>

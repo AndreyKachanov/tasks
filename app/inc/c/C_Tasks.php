@@ -98,8 +98,8 @@
 
 
 				$fields = $_POST;	
-			}
-
+			}	
+			
 			$this->title = " Менеджер задач | Добавить задачу";
 			$this->content = $this->template('inc/v/tasks/v_add.php', 
 			[	

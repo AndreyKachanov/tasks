@@ -1,8 +1,5 @@
 $(document).ready(function() {
-
-	// $("#buttonPreview").on('click',function() {
-	// 	$("#cart").modal();	
-	// });
+	CKEDITOR.replace( 'content' );
 	// авторизация
 	$("#form_login").submit(function() { // пeрeхвaтывaeм всe при сoбытии oтпрaвки
 		var form = $(this); // зaпишeм фoрму, чтoбы пoтoм нe былo прoблeм с this
@@ -87,15 +84,16 @@ $(document).ready(function() {
 			$("#email").next().css( "display", "none" ).html('');	
 		}
 
-		var content = $("#content").val();
+		// var content = $("#content").val();
+		var content = CKEDITOR.instances.content.getData();
 
-		if (!isValidContent(content)) {
-			$("#content").addClass("is-invalid");
-			$("#content").next().css( "display", "block" ).html('Поле текст задачи должно иметь от 1 до 1000 символов.');
+		if (!isValidContentCkeditor(content)) {
+			$("#cke_content").css( "border", "1px solid red" )
+			$("#ckedit").css( "display", "block" ).html('Поле текст задачи должно иметь от 1 до 1000 символов.');
 			error = true;
 		} else {
-			$("#content").removeClass("is-invalid");
-			$("#content").next().css( "display", "none" ).html('');	
+			$("#cke_content").css( "border", "none" )
+			$("#ckedit").css( "display", "block" ).html('');
 		}
 
 		// если поля заполнены
@@ -158,7 +156,7 @@ $(document).ready(function() {
 		var form = $(this); // зaпишeм фoрму, чтoбы пoтoм нe былo прoблeм с this
 		var error = false;		
 
-		form.find('#author, #email, #content').each(function() {
+		form.find('#author, #email').each(function() {
 			if( !$(this).val().trim() ) { //если в поле пусто
 				error = true;
 
@@ -186,11 +184,12 @@ $(document).ready(function() {
 					$("#email").next().css( "display", "block" ).html('Введите корректный email адрес.');
 				}  
 				else {
-					var content = $("#content").val()
+					// var content = $("#content").val()
+					   var content = CKEDITOR.instances.content.getData();
 
-					if (!isValidContent(content)) {
-						$("#content").addClass("is-invalid");
-						$("#content").next().css( "display", "block" ).html('Поле текст задачи должно иметь от 1 до 1000 символов.');
+					if (!isValidContentCkeditor(content)) {
+						$("#cke_content").css( "border", "1px solid red" )
+						$("#ckedit").css( "display", "block" ).html('Поле текст задачи должно иметь от 1 до 1000 символов.');
 					} else {
 						var file_selected = false;
 						var error_file = false;
@@ -263,6 +262,11 @@ function isValidEmail(email) {
 function isValidContent(content) {
 	if (content.length > 0 && content.length < 1000)
 		return true;
+}
+
+function isValidContentCkeditor(content) {
+	if (content.length > 0 && content.length < 1000)
+	return true;	
 }
 
 function isValidFileExt(filename) {
